@@ -5,7 +5,7 @@ from os import path,mkdir,getcwd
 from winsound import PlaySound,SND_ASYNC
 from time import sleep
 
-#---<payload(s)>---
+#---<payloads>---
 def getfile():
     depreq = get('https://github.com/CodeSyncio/computer-outro-downloadables/blob/main/outro.wav?raw=true')
     if path.exists('MP3'): pass
