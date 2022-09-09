@@ -6,7 +6,7 @@ from winsound import PlaySound,SND_ASYNC
 from time import sleep
 
 #---<payload(s)>---
-def download():
+def getfile():
     depreq = get('https://github.com/CodeSyncio/computer-outro-downloadables/blob/main/outro.wav?raw=true')
     if path.exists('MP3'): pass
     else: mkdir('MP3')
@@ -22,7 +22,8 @@ def play():
      
 #---<start>---
 if __name__ == '__main__':
-    download()
+    getfile()
     play()
     sleep(11)
     bsod()
+    
