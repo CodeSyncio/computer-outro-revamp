@@ -24,6 +24,9 @@ def LoadConfig():
             template = {"AutoInitiate": "","HowToUse":"For shutting down, set AutoInitiate to 's', for fake BSOD, 'fb', and for real BSOD 'b'"}
             json.dump(template, outfile)
             outfile.close()
+            print("Config has been created! u can use it to skip the select menu! (not needed, but usefull)")
+            sleep(2)
+            system('cls')
     
     with open('config.json','r') as cf:
             AutoInit = []
