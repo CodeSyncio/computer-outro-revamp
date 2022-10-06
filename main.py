@@ -12,11 +12,26 @@ except:
     check_call([executable, '-m', 'pip', 'install','requests'],stdout=DEVNULL,stderr=STDOUT)
     from requests import get
     print('Done!')
-
 from winsound import PlaySound,SND_ASYNC
 from time import sleep
-
+import json
 #---<payloads>---
+def LoadConfig():
+    if path.exists('config.json'):
+            pass
+    else:
+        with open('config.json', 'w') as outfile:
+            template = {"AutoInitiate": "","HowToUse":"For shutting down, set AutoInitiate to 's', for fake BSOD, 'fb', and for real BSOD 'b'"}
+            json.dump(template, outfile)
+            outfile.close()
+    
+    with open('config.json','r') as cf:
+            AutoInit = []
+            AutoInit.append(json.load(cf))
+    if len(AutoInit[0]['AutoInitiate']) ==0:
+        return None
+    else:
+        return (1 if AutoInit[0]['AutoInitiate'] == 's'else (2 if AutoInit[0]['AutoInitiate'] =='b'else 3)) 
 def getfile():
     audio = get('https://github.com/CodeSyncio/computer-outro-downloadables/blob/main/outro.wav?raw=true')
     fake = get('https://github.com/CodeSyncio/computer-outro-downloadables/blob/main/fakebsod.hta?raw=true')
@@ -44,8 +59,13 @@ def play():
 #---<start>---
 if __name__ == '__main__':
     getfile()
-    print('Please choose an option.\n[1] Shutdown\n[2] BSOD\n[3] Fake BSOD')
-    c = int(input())
+    con = LoadConfig()
+    print(con)
+    if con == None:
+        print('Please choose an option.\n[1] Shutdown\n[2] BSOD\n[3] Fake BSOD')
+        c = int(input())
+    else:
+        c = con
     play()
     for i in range(10):
         system('cls')
