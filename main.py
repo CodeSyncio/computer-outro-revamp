@@ -63,7 +63,7 @@ def play():
 if __name__ == '__main__':
     getfile()
     con = LoadConfig()
-    print(con)
+    
     if con == None:
         print('Please choose an option.\n[1] Shutdown\n[2] BSOD\n[3] Fake BSOD')
         c = int(input())
